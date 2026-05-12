@@ -60,4 +60,22 @@ public class CommentService {
 
         commentRepository.delete(comment);
     }
+
+
+    //EXTRA ENDPOINTS
+    public List<Comment> getAllCommentsForPost(Integer postId){
+        List<Comment> postComments = commentRepository.findAllCommentsForPost(postId);
+
+        if(postComments.isEmpty()) throw new ApiException("No comments found");
+
+        return postComments;
+    }
+
+    public List<Comment> getAllCommentsForUser(Integer userId){
+        List<Comment> userComments = commentRepository.findAllCommentsForUser(userId);
+
+        if(userComments.isEmpty()) throw new ApiException("No comments found");
+
+        return userComments;
+    }
 }

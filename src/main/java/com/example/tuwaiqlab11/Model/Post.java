@@ -26,7 +26,7 @@ public class Post {
     @NotNull(message = "User Id must not be null")
     private Integer userId;
 
-    @Column(columnDefinition = "varchar(30) not null")
+    @Column(columnDefinition = "varchar(30) not null unique")
     @NotEmpty(message = "Title must not be empty")
     @Size(min = 5, message = "Title must be more than 4 characters")
     private String title;

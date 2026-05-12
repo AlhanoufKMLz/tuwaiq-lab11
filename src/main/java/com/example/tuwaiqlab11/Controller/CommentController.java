@@ -1,7 +1,6 @@
 package com.example.tuwaiqlab11.Controller;
 
 import com.example.tuwaiqlab11.Api.ApiResponse;
-import com.example.tuwaiqlab11.Model.Category;
 import com.example.tuwaiqlab11.Model.Comment;
 import com.example.tuwaiqlab11.Service.CommentService;
 import jakarta.validation.Valid;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class CommentController {
 
     private final CommentService commentService;
+
 
     //BASIC CRUD ENDPOINTS
     @GetMapping("/get")
@@ -45,5 +45,17 @@ public class CommentController {
     public ResponseEntity<?> deleteComment(@PathVariable Integer id){
         commentService.deleteComment(id);
         return ResponseEntity.status(200).body(new ApiResponse("Comment deleted successfully"));
+    }
+
+
+    //EXTRA ENDPOINTS
+    @GetMapping("/get-post/{postId}")
+    public ResponseEntity<?> getAllCommentsForPost(@PathVariable Integer postId){
+        return ResponseEntity.status(200).body(commentService.getAllCommentsForPost(postId));
+    }
+
+    @GetMapping("/get-user/{userId}")
+    public ResponseEntity<?> getAllPostsByUser(@PathVariable Integer userId){
+        return ResponseEntity.status(200).body(commentService.getAllCommentsForUser(userId));
     }
 }

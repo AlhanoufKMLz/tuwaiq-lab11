@@ -46,4 +46,16 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.status(200).body(new ApiResponse("User deleted successfully"));
     }
+
+
+    //EXTRA ENDPOINTS
+    @GetMapping("/get-most-posts")
+    public ResponseEntity<?> findUserWithMostPosts(){
+        return ResponseEntity.status(200).body(userService.findUserWithMostPosts());
+    }
+
+    @GetMapping("/get-most-comments")
+    public ResponseEntity<?> findUserWithMostComments(){
+        return ResponseEntity.status(200).body(userService.findUserWithMostComments());
+    }
 }

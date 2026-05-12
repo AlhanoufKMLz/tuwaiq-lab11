@@ -16,6 +16,7 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
+
     //BASIC CRUD ENDPOINTS
     @GetMapping("/get")
     public ResponseEntity<?> getAllCategories(){

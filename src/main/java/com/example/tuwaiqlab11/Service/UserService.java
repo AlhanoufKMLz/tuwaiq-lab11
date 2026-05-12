@@ -42,4 +42,22 @@ public class UserService {
 
         userRepository.delete(user);
     }
+
+
+    //EXTRA ENDPOINTS
+    public User findUserWithMostPosts(){
+        User user = userRepository.findUserWithMostPosts();
+
+        if(user == null) throw new ApiException("User not found");
+
+        return user;
+    }
+
+    public User findUserWithMostComments(){
+        User user = userRepository.findUserWithMostComments();
+
+        if(user == null) throw new ApiException("User not found");
+
+        return user;
+    }
 }
